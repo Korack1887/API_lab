@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement />
+  <nodes>
+    <node x="106.0" y="125.0">com.nure.API_lab.entities.User</node>
+    <node x="111.0" y="360.0">com.nure.API_lab.entities.Details</node>
+    <node x="302.6901041666667" y="338.0">com.nure.API_lab.entities.Category</node>
+    <node x="421.0" y="169.0">com.nure.API_lab.entities.Animator</node>
+    <node x="99.5" y="529.0">com.nure.API_lab.entities.EventOrder</node>
+    <node x="0.0" y="349.0">com.nure.API_lab.entities.Status</node>
+    <node x="133.453125" y="0.0">com.nure.API_lab.entities.Role</node>
+    <node x="259.0" y="158.0">com.nure.API_lab.entities.Costume</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="com.nure.API_lab.entities.User" target="com.nure.API_lab.entities.Role">
+      <point x="33.25" y="-81.5" />
+      <point x="205.75" y="100.0" />
+      <point x="190.453125" y="100.0" />
+      <point x="19.0" y="37.5" />
+    </edge>
+    <edge source="com.nure.API_lab.entities.Category" target="com.nure.API_lab.entities.Costume">
+      <point x="-23.625" y="-70.5" />
+      <point x="373.5651041666667" y="313.0" />
+      <point x="365.5" y="313.0" />
+      <point x="35.5" y="48.5" />
+    </edge>
+    <edge source="com.nure.API_lab.entities.EventOrder" target="com.nure.API_lab.entities.Details">
+      <point x="12.166666666666686" y="-70.5" />
+      <point x="184.66666666666669" y="509.0" />
+      <point x="203.25" y="509.0" />
+      <point x="30.75" y="48.5" />
+    </edge>
+    <edge source="com.nure.API_lab.entities.EventOrder" target="com.nure.API_lab.entities.Status">
+      <point x="-60.833333333333314" y="-70.5" />
+      <point x="111.66666666666669" y="509.0" />
+      <point x="22.75" y="509.0" />
+      <point x="-22.75" y="59.5" />
+    </edge>
+    <edge source="com.nure.API_lab.entities.EventOrder" target="com.nure.API_lab.entities.Category">
+      <point x="60.833333333333314" y="-70.5" />
+      <point x="233.33333333333331" y="509.0" />
+      <point x="444.4401041666667" y="509.0" />
+      <point x="47.25" y="70.5" />
+    </edge>
+    <edge source="com.nure.API_lab.entities.Category" target="com.nure.API_lab.entities.Animator">
+      <point x="70.875" y="-70.5" />
+      <point x="468.0651041666667" y="313.0" />
+      <point x="505.75" y="313.0" />
+      <point x="28.25" y="37.5" />
+    </edge>
+    <edge source="com.nure.API_lab.entities.Details" target="com.nure.API_lab.entities.User">
+      <point x="30.75" y="-48.5" />
+      <point x="203.25" y="313.0" />
+      <point x="205.75" y="313.0" />
+      <point x="33.25" y="81.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="464.0" y="342.0" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Fields</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

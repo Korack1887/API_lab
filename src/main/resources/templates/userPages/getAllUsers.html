@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>User</title>
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+</head>
+<body>
+<table>
+    <tr id="table-header">
+        <th>ID</th>
+        <th>Name</th>
+        <th>Password</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Role</th>
+        <th></th>
+        <th></th>
+    </tr>
+    <tr th:each="user: ${users}">
+        <td><a th:href="@{/allUsers/{id}(id=${user.id})}" th:text="${user.id}"></a></td>
+        <td th:text="${user.name}"></td>
+        <td th:text="${user.password}"></td>
+        <td th:text="${user.email}"></td>
+        <td th:text="${user.phone}"></td>
+        <td th:text="${user.role}"></td>
+        <td><a th:href="@{/deleteUser/{id}(id=${user.id})}">Delete</a></td>
+        <td><a th:href="@{/updateUser/{id}(id=${user.id})}">Update</a></td>
+    </tr>
+</table>
+<a href="/insertUser">New User</a><br>
+<a href="/allUsers" th:if="${getById}">All Users</a>
+<div class="left-menu">
+    <a href="/allAnimators">all Animators</a><br>
+    <a href="/allCategories">all Categories</a><br>
+    <a href="/allCostumes">all Costumes</a><br>
+    <a href="/allDetails">all ADetails</a><br>
+    <a href="/allUsers">all Users</a><br>
+    <a href="/allEventOrders">all EventOrders</a><br>
+</div>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Category</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+</div>
+<h3 th:if="${update}">Category id: <span th:text="${category.id}"></span></h3>
+<form class="form-style-1"  action="#" th:action="${path}" th:object="${category}" method="post">
+    <h3>Category name</h3>
+    <input type="text" th:field="*{name}" required th:value="${category.name}"><br>
+    <h3>Category price</h3>
+    <input type="text" th:field="*{price}" required th:value="${category.price}"><br>
+    <select name="animatorId" required multiple>
+        <option th:each="animator : ${animatorList}"
+                th:value="${animator.id}" th:text="${animator.name}"></option>
+    </select>
+    <select name="costumeId" required multiple>
+        <option th:each="costume : ${costumeList}"
+                th:value="${costume.id}" th:text="${costume.name}"></option>
+    </select>
+    <input type="submit">
+</form>
+<div th:switch="${update}">
+<a th:case="${update}" th:href="@{/allCategories/{id}(id=${category.id})}">Go back</a>
+<a th:case="*" href="/allCategories">Go back</a>
+</div>
+<div class="left-menu">
+    <a href="/allAnimators">all Animators</a><br>
+    <a href="/allCategories">all Categories</a><br>
+    <a href="/allCostumes">all Costumes</a><br>
+    <a href="/allDetails">all ADetails</a><br>
+    <a href="/allUsers">all Users</a><br>
+    <a href="/allEventOrders">all EventOrders</a><br>
+</div>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Category</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<table>
+    <tr id="table-header">
+        <th>ID</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Animators</th>
+        <th>Costumes</th>
+        <th></th>
+        <th></th>
+    </tr>
+    <tr th:each="category: ${categories}">
+        <td><a th:href="@{/allCategories/{id}(id=${category.id})}" th:text="${category.id}"></a></td>
+        <td th:text="${category.name}"></td>
+        <td th:text="${category.price}"></td>
+        <td><a class="id-link" th:each="animator: ${category.animators}" th:href="@{/allAnimators/{id}(id=${animator.id})}" th:text="'[' +${animator.id} + ']'"></a></td>
+        <td><a class="id-link" th:each="costume: ${category.costumes}" th:href="@{/allCostumes/{id}(id=${costume.id})}" th:text="'[' + ${costume.id} + ']'"></a></td>
+        <td></td>
+        <td><a th:href="@{/deleteCategory/{id}(id=${category.id})}">Delete</a></td>
+        <td><a th:href="@{/updateCategory/{id}(id=${category.id})}">Update</a></td>
+    </tr>
+</table>
+<a href="/insertCategory">New Category</a><br>
+<a href="/allCategories" th:if="${getById}">All Categories</a>
+<div class="left-menu">
+    <a href="/allAnimators">all Animators</a><br>
+    <a href="/allCategories">all Categories</a><br>
+    <a href="/allCostumes">all Costumes</a><br>
+    <a href="/allDetails">all ADetails</a><br>
+    <a href="/allUsers">all Users</a><br>
+    <a href="/allEventOrders">all EventOrders</a><br>
+</div>
+</body>
+</html>

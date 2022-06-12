@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>EventOrder</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<table>
+    <tr id="table-header">
+        <th>ID</th>
+        <th>status</th>
+        <th>details</th>
+        <th>category</th>
+        <th>date</th>
+        <th></th>
+        <th></th>
+    </tr>
+    <tr th:each="eventOrder: ${eventOrders}">
+        <td><a th:href="@{/allEventOrder/{id}(id=${eventOrder.id})}" th:text="${eventOrder.id}"></a></td>
+        <td th:text="${eventOrder.status}"></td>
+        <td><a th:href="@{/allDetails/{id}(id=${eventOrder.details.id})}" th:text="${eventOrder.details.id} + '  '"></a></td>
+        <td><a th:href="@{/allCategories/{id}(id=${eventOrder.category.id})}" th:text="${eventOrder.category.id} + '  '"></a></td>
+        <td th:text="${eventOrder.date}"></td>
+        <td><a th:href="@{/deleteEventOrder/{id}(id=${eventOrder.id})}">Delete</a></td>
+        <td><a th:href="@{/updateEventOrder/{id}(id=${eventOrder.id})}">Update</a></td>
+    </tr>
+</table>
+<a href="/insertEventOrders">New EventOrder</a><br>
+<a href="/countEventOrders">Count orders</a><br>
+<a href="/allEventOrder" th:if="${getById}">All EventOrder</a>
+<div class="left-menu">
+    <a href="/allAnimators">all Animators</a><br>
+    <a href="/allCategories">all Categories</a><br>
+    <a href="/allCostumes">all Costumes</a><br>
+    <a href="/allDetails">all ADetails</a><br>
+    <a href="/allUsers">all Users</a><br>
+    <a href="/allEventOrders">all EventOrders</a><br>
+</div>
+</body>
+</html>

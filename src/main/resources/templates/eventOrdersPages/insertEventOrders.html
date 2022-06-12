@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>EventOrder</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+</div>
+<h3 th:if="${update}">EventOrder id: <span th:text="${eventOrder.id}"></span></h3>
+<form class="form-style-1"  action="#" th:action="${path}" th:object="${eventOrder}" method="post">
+    <h3>EventOrder status</h3>
+    <select th:field="*{status}">
+        <option th:each="status : ${T(com.nure.API_lab.entities.Status).values()}"
+                th:value="${status}" th:text="${status}"></option>
+    </select><br>
+    <h3>EventOrder details</h3>
+    <select name="detailsId" required multiple>
+        <option th:each="details : ${detailsList}"
+                th:value="${details.id}" th:text="${details.address}"></option>
+    </select>
+    <h3>category</h3>
+    <select name="categoryId" required multiple>
+        <option th:each="category : ${categoryList}"
+                th:value="${category.id}" th:text="${category.name}"></option>
+    </select>
+    <h3>Details date</h3>
+    <input type="datetime-local" th:field="*{date}" required th:value="${eventOrder.date}"><br>
+    <input type="submit">
+</form>
+<div th:switch="${update}">
+<a th:case="${update}" th:href="@{/allEventOrder/{id}(id=${eventOrder.id})}">Go back</a>
+<a th:case="*" href="/allEventOrder">Go back</a>
+</div>
+<div class="left-menu">
+    <a href="/allAnimators">all Animators</a><br>
+    <a href="/allCategories">all Categories</a><br>
+    <a href="/allCostumes">all Costumes</a><br>
+    <a href="/allDetails">all ADetails</a><br>
+    <a href="/allUsers">all Users</a><br>
+    <a href="/allEventOrders">all EventOrders</a><br>
+</div>
+</body>
+</html>

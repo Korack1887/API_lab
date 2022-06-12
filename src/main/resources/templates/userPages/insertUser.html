@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>User</title>
+</head>
+<body>
+</div>
+<h3 th:if="${update}">User id: <span th:text="${user.id}"></span></h3>
+<form class="form-style-1"  action="#" th:action="${path}" th:object="${user}" method="post">
+    <h3>User name</h3>
+    <input type="text" th:field="*{name}" required th:value="${user.name}"><br>
+    <h3>User password</h3>
+    <input type="password" th:field="*{password}" required th:value="${user.password}"><br>
+    <h3>User email</h3>
+    <input type="email" th:field="*{email}" required th:value="${user.email}"><br>
+    <h3>User phone</h3>
+    <input type="tel" th:field="*{phone}" required th:value="${user.phone}"><br>
+    <h3>User role</h3>
+    <select th:field="*{role}">
+        <option th:each="role : ${T(com.nure.API_lab.entities.Role).values()}"
+                th:value="${role}" th:text="${role}"></option>
+    </select><br>
+    <input type="submit">
+</form>
+<div th:switch="${update}">
+<a th:case="${update}" th:href="@{/allUsers/{id}(id=${user.id})}">Go back</a>
+<a th:case="*" href="/allUsers">Go back</a>
+</div>
+<div class="left-menu">
+    <a href="/allAnimators">all Animators</a><br>
+    <a href="/allCategories">all Categories</a><br>
+    <a href="/allCostumes">all Costumes</a><br>
+    <a href="/allDetails">all ADetails</a><br>
+    <a href="/allUsers">all Users</a><br>
+    <a href="/allEventOrders">all EventOrders</a><br>
+</div>
+</body>
+</html>

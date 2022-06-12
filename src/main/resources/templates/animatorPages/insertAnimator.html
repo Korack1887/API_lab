@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Animator</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+</div>
+<h3 th:if="${update}">Animator id: <span th:text="${animator.id}"></span></h3>
+<form class="form-style-1"  action="#" th:action="${path}" th:object="${animator}" method="post">
+    <h3>Animator name</h3>
+    <input type="text" th:field="*{name}" required th:value="${animator.name}"><br>
+    <input type="submit">
+</form>
+<div th:switch="${update}">
+<a th:case="${update}" th:href="@{/allAnimators/{id}(id=${animator.id})}">Go back</a>
+<a th:case="*" href="/allAnimators">Go back</a>
+</div>
+<div class="left-menu">
+    <a href="/allAnimators">all Animators</a><br>
+    <a href="/allCategories">all Categories</a><br>
+    <a href="/allCostumes">all Costumes</a><br>
+    <a href="/allDetails">all ADetails</a><br>
+    <a href="/allUsers">all Users</a><br>
+    <a href="/allEventOrders">all EventOrders</a><br>
+</div>
+</body>
+</html>

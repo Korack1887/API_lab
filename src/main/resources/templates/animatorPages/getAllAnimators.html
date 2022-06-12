@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Animator</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<table>
+    <tr id="table-header">
+        <th>ID</th>
+        <th>Name</th>
+        <th></th>
+        <th></th>
+    </tr>
+    <tr th:each="animator: ${animators}">
+        <td><a th:href="@{/allAnimators/{id}(id=${animator.id})}" th:text="${animator.id}"></a></td>
+        <td th:text="${animator.name}"></td>
+        <td><a th:href="@{/deleteAnimator/{id}(id=${animator.id})}">Delete</a></td>
+        <td><a th:href="@{/updateAnimator/{id}(id=${animator.id})}">Update</a></td>
+    </tr>
+</table>
+<a href="/insertAnimator">New Animator</a><br>
+<a href="/allAnimators" th:if="${getById}">All animators</a>
+<div class="left-menu">
+    <a href="/allAnimators">all Animators</a><br>
+    <a href="/allCategories">all Categories</a><br>
+    <a href="/allCostumes">all Costumes</a><br>
+    <a href="/allDetails">all ADetails</a><br>
+    <a href="/allUsers">all Users</a><br>
+    <a href="/allEventOrders">all EventOrders</a><br>
+</div>
+</body>
+</html>
