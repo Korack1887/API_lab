@@ -20,12 +20,12 @@ public class AnimatorController {
         this.repository = repository;
     }
 
-    @GetMapping(value = "/allAnimators")
+    @GetMapping(value = "/allActors")
     public String getAllAnimators(Model model){
         model.addAttribute("animators", repository.findAll());
         return "animatorPages/getAllAnimators";
     }
-    @GetMapping(value = "/allAnimators/{id}")
+    @GetMapping(value = "/allActors/{id}")
     public String getAnimatorById(Model model, @PathVariable Long id){
         ArrayList<Animator> list = new ArrayList<>();
         list.add(repository.getById(id));
@@ -33,32 +33,32 @@ public class AnimatorController {
         model.addAttribute("getById", true);
         return "animatorPages/getAllAnimators";
     }
-    @GetMapping(value = "/deleteAnimator/{id}")
+    @GetMapping(value = "/deleteActor/{id}")
     public String deleteAnimator(@PathVariable Long id){
         repository.deleteById(id);
-        return "redirect:/allAnimators";
+        return "redirect:/allActors";
     }
-    @GetMapping(value = "/insertAnimator")
+    @GetMapping(value = "/insertActor")
     public String insertAnimator(Model model){
         model.addAttribute("animator", new Animator());
         model.addAttribute("path", "/insertAnimator");
         return "animatorPages/insertAnimator";
     }
-    @PostMapping(value = "/insertAnimator")
+    @PostMapping(value = "/insertActor")
     public String insertAnimator(@ModelAttribute Animator animator){
         repository.save(animator);
         return "redirect:/allAnimators";
     }
-    @GetMapping(value = "/updateAnimator/{id}")
+    @GetMapping(value = "/updateActor/{id}")
     public String updateAnimator(@PathVariable Long id, Model model){
         model.addAttribute("animator", repository.getById(id));
         model.addAttribute("path", "/updateAnimator/"+id);
         model.addAttribute("update", true);
         return "animatorPages/insertAnimator";
     }
-    @PostMapping(value = "/updateAnimator/{id}")
+    @PostMapping(value = "/updateActor/{id}")
     public String updateAnimator(@ModelAttribute Animator animator){
         repository.save(animator);
-        return "redirect:/allAnimators";
+        return "redirect:/allActors";
     }
 }
