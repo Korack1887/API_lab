@@ -3,9 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>User</title>
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
 </div>
+<div class="form">
 <h3 th:if="${update}">User id: <span th:text="${user.id}"></span></h3>
 <form class="form-style-1"  action="#" th:action="${path}" th:object="${user}" method="post">
     <h3>User name</h3>
@@ -23,17 +25,11 @@
     </select><br>
     <input type="submit">
 </form>
+</div>
 <div th:switch="${update}">
 <a th:case="${update}" th:href="@{/allUsers/{id}(id=${user.id})}">Go back</a>
 <a th:case="*" href="/allUsers">Go back</a>
 </div>
-<div class="left-menu">
-     <a href="/allActors">all Actors</a><br><br>
-    <a href="/allCategories">all Categories</a><br>
-    <a href="/allCostumes">all Costumes</a><br>
-    <a href="/allDetails">all Details</a><br>
-    <a href="/allUsers">all Users</a><br>
-    <a href="/allEventOrders">all EventOrders</a><br>
-</div>
+<div th:insert="navigation :: navigation"></div>
 </body>
 </html>

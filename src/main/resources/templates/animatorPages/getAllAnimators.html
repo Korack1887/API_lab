@@ -22,13 +22,6 @@
 </table>
 <a href="/insertActor">New Actor</a><br>
 <a href="/allActors" th:if="${getById}">All Actors</a>
-<div class="left-menu">
-    <a href="/allActors">all Actors</a><br>
-    <a href="/allCategories">all Categories</a><br>
-    <a href="/allCostumes">all Costumes</a><br>
-    <a href="/allDetails">all Details</a><br>
-    <a href="/allUsers">all Users</a><br>
-    <a href="/allEventOrders">all EventOrders</a><br>
-</div>
+<div th:insert="navigation :: navigation"></div>
 </body>
 </html>
