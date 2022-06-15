@@ -26,26 +26,35 @@ public class CategoryController {
         this.costumeRepository = costumeRepository;
     }
 
-    @GetMapping(value = "/allCategories")
-    public String getAllCategories(Model model){
+    @GetMapping(value = "/")
+    public String getDefaultPage(Model model) {
         model.addAttribute("categories", repository.findAll());
         return "categoryPages/getAllCategories";
     }
+
+    @GetMapping(value = "/allCategories")
+    public String getAllCategories(Model model) {
+        model.addAttribute("categories", repository.findAll());
+        return "categoryPages/getAllCategories";
+    }
+
     @GetMapping(value = "/allCategories/{id}")
-    public String getCategoryById(Model model, @PathVariable Long id){
+    public String getCategoryById(Model model, @PathVariable Long id) {
         ArrayList<Category> list = new ArrayList<>();
         list.add(repository.getById(id));
         model.addAttribute("categories", list);
         model.addAttribute("getById", true);
         return "categoryPages/getAllCategories";
     }
+
     @GetMapping(value = "/deleteCategory/{id}")
-    public String deleteCategory(@PathVariable Long id){
+    public String deleteCategory(@PathVariable Long id) {
         repository.deleteById(id);
         return "redirect:/allCategories";
     }
+
     @GetMapping(value = "/insertCategory")
-    public String insertCategory(Model model){
+    public String insertCategory(Model model) {
         model.addAttribute("category", new Category());
         model.addAttribute("animatorList", animatorRepository.findAll());
         model.addAttribute("costumeList", costumeRepository.findAll());
@@ -53,8 +62,9 @@ public class CategoryController {
         model.addAttribute("path", "/insertCategory");
         return "categoryPages/insertCategory";
     }
+
     @PostMapping(value = "/insertCategory")
-    public String insertCategory(@ModelAttribute Category category, @RequestParam("animatorId") Long[] animatorId, @RequestParam("costumeId") Long[] costumeId){
+    public String insertCategory(@ModelAttribute Category category, @RequestParam("animatorId") Long[] animatorId, @RequestParam("costumeId") Long[] costumeId) {
         List<Animator> animator = animatorRepository.findAllById(Arrays.asList(animatorId));
         List<Costume> costume = costumeRepository.findAllById(Arrays.asList(costumeId));
         category.setAnimators(animator);
@@ -62,17 +72,19 @@ public class CategoryController {
         repository.save(category);
         return "redirect:/allCategories";
     }
+
     @GetMapping(value = "/updateCategory/{id}")
-    public String updateCategory(@PathVariable Long id, Model model){
+    public String updateCategory(@PathVariable Long id, Model model) {
         model.addAttribute("category", repository.getById(id));
         model.addAttribute("animatorList", animatorRepository.findAll());
         model.addAttribute("costumeList", costumeRepository.findAll());
-        model.addAttribute("path", "/updateCategory/"+id);
+        model.addAttribute("path", "/updateCategory/" + id);
         model.addAttribute("update", true);
         return "categoryPages/insertCategory";
     }
+
     @PostMapping(value = "/updateCategory/{id}")
-    public String updateCategory(@ModelAttribute Category category, @RequestParam("animatorId") Long[] animatorId, @RequestParam("costumeId") Long[] costumeId){
+    public String updateCategory(@ModelAttribute Category category, @RequestParam("animatorId") Long[] animatorId, @RequestParam("costumeId") Long[] costumeId) {
         List<Animator> animator = animatorRepository.findAllById(Arrays.asList(animatorId));
         List<Costume> costume = costumeRepository.findAllById(Arrays.asList(costumeId));
         category.setAnimators(animator);

@@ -11,7 +11,7 @@
         <th>ID</th>
         <th>Name</th>
         <th>Price</th>
-        <th>Animators</th>
+        <th>Actors</th>
         <th>Costumes</th>
         <th></th>
         <th></th>
@@ -20,9 +20,8 @@
         <td><a th:href="@{/allCategories/{id}(id=${category.id})}" th:text="${category.id}"></a></td>
         <td th:text="${category.name}"></td>
         <td th:text="${category.price}"></td>
-        <td><a class="id-link" th:each="animator: ${category.animators}" th:href="@{/allAnimators/{id}(id=${animator.id})}" th:text="'[' +${animator.id} + ']'"></a></td>
-        <td><a class="id-link" th:each="costume: ${category.costumes}" th:href="@{/allCostumes/{id}(id=${costume.id})}" th:text="'[' + ${costume.id} + ']'"></a></td>
-        <td></td>
+        <td><a class="id-link" th:each="animator: ${category.animators}" th:href="@{/allActors/{id}(id=${animator.id})}" th:text="'[' +${animator.name} + ']'"></a></td>
+        <td><a class="id-link" th:each="costume: ${category.costumes}" th:href="@{/allCostumes/{id}(id=${costume.id})}" th:text="'[' + ${costume.name} + ']'"></a></td>
         <td><a th:href="@{/deleteCategory/{id}(id=${category.id})}">Delete</a></td>
         <td><a th:href="@{/updateCategory/{id}(id=${category.id})}">Update</a></td>
     </tr>
