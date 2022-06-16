@@ -12,11 +12,4 @@ public class UserService {
     @Autowired
     UserRepository repository;
 
-    public boolean login(User user){
-        return repository.findAll().stream().anyMatch(u-> u.email.equals(user.email) && u.password.equals(user.password));
-    }
-
-    public User getUserByEmail(String email){
-        return repository.findAll().stream().filter(u -> u.email.equals(email)).findFirst().get();
-    }
 }

@@ -25,7 +25,7 @@ public class CostumeController {
         return "costumePages/getAllCostumes";
     }
     @GetMapping(value = "/allCostumes/{id}")
-    public String getCostumeById(Model model, @PathVariable Long id){
+    public String getCostumeById(Model model, @PathVariable Integer id){
         ArrayList<Costume> list = new ArrayList<>();
         list.add(repository.getById(id));
         model.addAttribute("costumes", list);
@@ -33,7 +33,7 @@ public class CostumeController {
         return "costumePages/getAllCostumes";
     }
     @GetMapping(value = "/deleteCostume/{id}")
-    public String deleteCostume(@PathVariable Long id){
+    public String deleteCostume(@PathVariable Integer id){
         repository.deleteById(id);
         return "redirect:/allCostumes";
     }
@@ -49,7 +49,7 @@ public class CostumeController {
         return "redirect:/allCostumes";
     }
     @GetMapping(value = "/updateCostume/{id}")
-    public String updateCostume(@PathVariable Long id, Model model){
+    public String updateCostume(@PathVariable Integer id, Model model){
         model.addAttribute("costume", repository.getById(id));
         model.addAttribute("path", "/updateCostume/"+id);
         model.addAttribute("update", true);

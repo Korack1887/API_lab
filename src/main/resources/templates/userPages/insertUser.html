@@ -10,19 +10,27 @@
 <div class="form">
 <h3 th:if="${update}">User id: <span th:text="${user.id}"></span></h3>
 <form class="form-style-1"  action="#" th:action="${path}" th:object="${user}" method="post">
-    <h3>User name</h3>
-    <input type="text" th:field="*{name}" required th:value="${user.name}"><br>
-    <h3>User password</h3>
-    <input type="password" th:field="*{password}" required th:value="${user.password}"><br>
+    <h1>Create new user</h1>
+    <h3>User firstName</h3>
+    <input type="text" th:field="*{firstName}" required th:value="${user.firstName}"><br>
+    <h3>User lastName</h3>
+    <input type="text" th:field="*{lastName}" required th:value="${user.lastName}"><br>
+    <h3>User midName</h3>
+    <input type="text" th:field="*{midName}" required th:value="${user.midName}"><br>
+<!--    <h3>User password</h3>-->
+<!--&lt;!&ndash;    <input type="password" th:field="*{password}" required th:value="${user.password}"><br>&ndash;&gt;-->
+<!--&lt;!&ndash;    <h3>User email</h3>&ndash;&gt;-->
+    <h3>User phone</h3>
+    <input type="tel" th:field="*{phoneNumber}" required th:value="${user.phoneNumber}"><br>
     <h3>User email</h3>
     <input type="email" th:field="*{email}" required th:value="${user.email}"><br>
-    <h3>User phone</h3>
-    <input type="tel" th:field="*{phone}" required th:value="${user.phone}"><br>
-    <h3>User role</h3>
-    <select th:field="*{role}">
-        <option th:each="role : ${T(com.nure.API_lab.entities.Role).values()}"
-                th:value="${role}" th:text="${role}"></option>
-    </select><br>
+    <h3>User birthday</h3>
+    <input type="date" th:field="*{birthday}" required th:value="${user.birthday}"><br>
+<!--    <h3>User role</h3>-->
+<!--    <select th:field="*{role}">-->
+<!--        <option th:each="role : ${T(com.nure.API_lab.entities.Role).values()}"-->
+<!--                th:value="${role}" th:text="${role}"></option>-->
+<!--    </select><br>-->
     <input type="submit">
 </form>
 </div>

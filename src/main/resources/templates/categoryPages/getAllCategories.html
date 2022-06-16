@@ -10,18 +10,16 @@
     <tr id="table-header">
         <th>ID</th>
         <th>Name</th>
-        <th>Price</th>
-        <th>Actors</th>
-        <th>Costumes</th>
+        <th>Description</th>
+        <th>Scenarios</th>
         <th></th>
         <th></th>
     </tr>
     <tr th:each="category: ${categories}">
         <td><a th:href="@{/allCategories/{id}(id=${category.id})}" th:text="${category.id}"></a></td>
         <td th:text="${category.name}"></td>
-        <td th:text="${category.price}"></td>
-        <td><a class="id-link" th:each="animator: ${category.animators}" th:href="@{/allActors/{id}(id=${animator.id})}" th:text="'[' +${animator.name} + ']'"></a></td>
-        <td><a class="id-link" th:each="costume: ${category.costumes}" th:href="@{/allCostumes/{id}(id=${costume.id})}" th:text="'[' + ${costume.name} + ']'"></a></td>
+        <td th:text="${category.description}"></td>
+        <td><a class="id-link" th:each="scenario: ${category.scenarios}" th:href="@{/allScenario/{id}(id=${scenario.id})}" th:text="'[' +${scenario.name} + ']'"></a></td>
         <td><a th:href="@{/deleteCategory/{id}(id=${category.id})}">Delete</a></td>
         <td><a th:href="@{/updateCategory/{id}(id=${category.id})}">Update</a></td>
     </tr>

@@ -3,61 +3,93 @@
   <ID>JAVA</ID>
   <OriginalElement />
   <nodes>
-    <node x="106.0" y="125.0">com.nure.API_lab.entities.User</node>
-    <node x="111.0" y="360.0">com.nure.API_lab.entities.Details</node>
-    <node x="302.6901041666667" y="338.0">com.nure.API_lab.entities.Category</node>
-    <node x="421.0" y="169.0">com.nure.API_lab.entities.Animator</node>
-    <node x="99.5" y="529.0">com.nure.API_lab.entities.EventOrder</node>
-    <node x="0.0" y="349.0">com.nure.API_lab.entities.Status</node>
-    <node x="133.453125" y="0.0">com.nure.API_lab.entities.Role</node>
-    <node x="259.0" y="158.0">com.nure.API_lab.entities.Costume</node>
+    <node x="256.75" y="703.0">com.example.EventAgency.entity.Actor</node>
+    <node x="489.3828125" y="972.0">com.example.EventAgency.entity.Authorization</node>
+    <node x="518.25" y="434.0">com.example.EventAgency.entity.User</node>
+    <node x="0.0" y="985.0">com.example.EventAgency.entity.ShoppingCart</node>
+    <node x="86.75" y="716.0">com.example.EventAgency.entity.EventOrder</node>
+    <node x="514.75" y="768.0">com.example.EventAgency.entity.Role</node>
+    <node x="99.3828125" y="217.0">com.example.EventAgency.entity.Scenario</node>
+    <node x="268.25" y="473.0">com.example.EventAgency.entity.Category</node>
+    <node x="64.3828125" y="0.0">com.example.EventAgency.entity.Costume</node>
+    <node x="55.75" y="499.0">com.example.EventAgency.entity.Status</node>
   </nodes>
   <notes />
   <edges>
-    <edge source="com.nure.API_lab.entities.User" target="com.nure.API_lab.entities.Role">
-      <point x="33.25" y="-81.5" />
-      <point x="205.75" y="100.0" />
-      <point x="190.453125" y="100.0" />
-      <point x="19.0" y="37.5" />
+    <edge source="com.example.EventAgency.entity.ShoppingCart" target="com.example.EventAgency.entity.EventOrder">
+      <point x="25.875" y="-83.5" />
+      <point x="129.375" y="947.0" />
+      <point x="161.75" y="947.0" />
+      <point x="0.0" y="96.5" />
     </edge>
-    <edge source="com.nure.API_lab.entities.Category" target="com.nure.API_lab.entities.Costume">
-      <point x="-23.625" y="-70.5" />
-      <point x="373.5651041666667" y="313.0" />
-      <point x="365.5" y="313.0" />
-      <point x="35.5" y="48.5" />
+    <edge source="com.example.EventAgency.entity.Authorization" target="com.example.EventAgency.entity.User">
+      <point x="53.66666666666663" y="-96.5" />
+      <point x="623.5494791666666" y="947.0" />
+      <point x="662.25" y="947.0" />
+      <point x="48.0" y="109.5" />
     </edge>
-    <edge source="com.nure.API_lab.entities.EventOrder" target="com.nure.API_lab.entities.Details">
-      <point x="12.166666666666686" y="-70.5" />
-      <point x="184.66666666666669" y="509.0" />
-      <point x="203.25" y="509.0" />
-      <point x="30.75" y="48.5" />
+    <edge source="com.example.EventAgency.entity.ShoppingCart" target="com.example.EventAgency.entity.Costume">
+      <point x="-77.625" y="-83.5" />
+      <point x="25.875" y="947.0" />
+      <point x="6.2578125" y="947.0" />
+      <point x="6.2578125" y="192.0" />
+      <point x="106.8828125" y="192.0" />
+      <point x="-42.5" y="83.5" />
     </edge>
-    <edge source="com.nure.API_lab.entities.EventOrder" target="com.nure.API_lab.entities.Status">
-      <point x="-60.833333333333314" y="-70.5" />
-      <point x="111.66666666666669" y="509.0" />
-      <point x="22.75" y="509.0" />
-      <point x="-22.75" y="59.5" />
+    <edge source="com.example.EventAgency.entity.ShoppingCart" target="com.example.EventAgency.entity.Actor">
+      <point x="77.625" y="-83.5" />
+      <point x="181.125" y="947.0" />
+      <point x="316.25" y="947.0" />
+      <point x="-59.5" y="109.5" />
     </edge>
-    <edge source="com.nure.API_lab.entities.EventOrder" target="com.nure.API_lab.entities.Category">
-      <point x="60.833333333333314" y="-70.5" />
-      <point x="233.33333333333331" y="509.0" />
-      <point x="444.4401041666667" y="509.0" />
-      <point x="47.25" y="70.5" />
+    <edge source="com.example.EventAgency.entity.Category" target="com.example.EventAgency.entity.Scenario">
+      <point x="0.0" y="-70.5" />
+      <point x="375.75" y="409.0" />
+      <point x="265.1328125" y="409.0" />
+      <point x="55.25" y="83.5" />
     </edge>
-    <edge source="com.nure.API_lab.entities.Category" target="com.nure.API_lab.entities.Animator">
-      <point x="70.875" y="-70.5" />
-      <point x="468.0651041666667" y="313.0" />
-      <point x="505.75" y="313.0" />
-      <point x="28.25" y="37.5" />
+    <edge source="com.example.EventAgency.entity.Authorization" target="com.example.EventAgency.entity.Actor">
+      <point x="-53.66666666666666" y="-96.5" />
+      <point x="516.2161458333334" y="947.0" />
+      <point x="435.25" y="947.0" />
+      <point x="59.5" y="109.5" />
     </edge>
-    <edge source="com.nure.API_lab.entities.Details" target="com.nure.API_lab.entities.User">
-      <point x="30.75" y="-48.5" />
-      <point x="203.25" y="313.0" />
-      <point x="205.75" y="313.0" />
-      <point x="33.25" y="81.5" />
+    <edge source="com.example.EventAgency.entity.Actor" target="com.example.EventAgency.entity.Category">
+      <point x="0.0" y="-109.5" />
+      <point x="0.0" y="70.5" />
+    </edge>
+    <edge source="com.example.EventAgency.entity.Scenario" target="com.example.EventAgency.entity.Costume">
+      <point x="0.0" y="-83.5" />
+      <point x="209.8828125" y="192.0" />
+      <point x="191.8828125" y="192.0" />
+      <point x="42.5" y="83.5" />
+    </edge>
+    <edge source="com.example.EventAgency.entity.ShoppingCart" target="com.example.EventAgency.entity.Scenario">
+      <point x="-25.875" y="-83.5" />
+      <point x="77.625" y="947.0" />
+      <point x="45.25" y="947.0" />
+      <point x="45.25" y="409.0" />
+      <point x="154.6328125" y="409.0" />
+      <point x="-55.25" y="83.5" />
+    </edge>
+    <edge source="com.example.EventAgency.entity.Authorization" target="com.example.EventAgency.entity.Role">
+      <point x="0.0" y="-96.5" />
+      <point x="569.8828125" y="947.0" />
+      <point x="583.25" y="947.0" />
+      <point x="0.0" y="44.5" />
+    </edge>
+    <edge source="com.example.EventAgency.entity.EventOrder" target="com.example.EventAgency.entity.Status">
+      <point x="-37.5" y="-96.5" />
+      <point x="0.0" y="44.5" />
+    </edge>
+    <edge source="com.example.EventAgency.entity.EventOrder" target="com.example.EventAgency.entity.User">
+      <point x="37.5" y="-96.5" />
+      <point x="199.25" y="678.0" />
+      <point x="566.25" y="678.0" />
+      <point x="-48.0" y="109.5" />
     </edge>
   </edges>
-  <settings layout="Hierarchic Group" zoom="1.0" x="464.0" y="342.0" />
+  <settings layout="Hierarchic Group" zoom="0.8" x="701.0952380952381" y="381.8809523809522" />
   <SelectedNodes />
   <Categories>
     <Category>Fields</Category>

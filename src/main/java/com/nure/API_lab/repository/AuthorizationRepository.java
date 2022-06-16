@@ -1,8 +1,8 @@
 package com.nure.API_lab.repository;
 
+import com.nure.API_lab.entities.Actor;
 import com.nure.API_lab.entities.Authorization;
-import com.nure.API_lab.entities.Category;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface CategoryRepository extends JpaRepository<Category, Integer> {
+public interface AuthorizationRepository extends JpaRepository<Authorization, Integer> {
 }

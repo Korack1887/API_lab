@@ -1,8 +1,8 @@
 package com.nure.API_lab.repository;
 
-import com.nure.API_lab.entities.Category;
 import com.nure.API_lab.entities.Costume;
+import com.nure.API_lab.entities.EventOrder;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface CostumeRepository extends JpaRepository<Costume, Integer> {
+public interface EventOrderRepository extends JpaRepository<EventOrder, Integer> {
 }

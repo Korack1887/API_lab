@@ -1,66 +1,39 @@
 package com.nure.API_lab.entities;
 
-import org.springframework.format.annotation.DateTimeFormat;
-
 import javax.persistence.*;
-import java.util.Date;
-import java.util.Objects;
+import java.sql.Date;
+import java.sql.Time;
 
 @Entity
 public class EventOrder {
     @Id
-    @GeneratedValue
-    public Long id;
-    @Enumerated(EnumType.STRING)
-    public Status status;
-    @OneToOne
-    public Details details;
-    @ManyToOne
-    public Category category;
-    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    public int id;
+    @ManyToOne(optional = false)
+    public User user;
+    @Column(nullable = false, columnDefinition = "Date")
     public Date date;
+    @Column(nullable = false)
+    public Time time;
+    @Column(nullable = false)
+    public String address;
+    @ManyToOne(optional = false)
+    public Status status;
 
-    @Override
-    public String toString() {
-        return "EventOrder{" +
-                "id=" + id +
-                ", status=" + status +
-                ", details=" + details +
-                ", category=" + category +
-                ", date=" + date +
-                '}';
-    }
-
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
-    public Status getStatus() {
-        return status;
+    public User getUser() {
+        return user;
     }
 
-    public void setStatus(Status status) {
-        this.status = status;
-    }
-
-    public Details getDetails() {
-        return details;
-    }
-
-    public void setDetails(Details details) {
-        this.details = details;
-    }
-
-    public Category getCategory() {
-        return category;
-    }
-
-    public void setCategory(Category category) {
-        this.category = category;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public Date getDate() {
@@ -71,6 +44,27 @@ public class EventOrder {
         this.date = date;
     }
 
-    public EventOrder() {
+    public Time getTime() {
+        return time;
+    }
+
+    public void setTime(Time time) {
+        this.time = time;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
     }
 }

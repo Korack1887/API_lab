@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Details</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+</div>
+<h3 th:if="${update}">Scenario id: <span th:text="${scenario.id}"></span></h3>
+<form class="form-style-1"  action="#" th:action="${path}" th:object="${scenario}" method="post">
+    <h3>Scenario name</h3>
+    <input type="text" th:field="*{name}" required th:value="${scenario.name}"><br>
+    <h3>Scenario description</h3>
+    <input type="text" th:field="*{description}" required th:value="${scenario.description}"><br>
+    <h3>Scenario price</h3>
+    <input type="number" th:field="*{price}" required th:value="${scenario.price}"><br>
+    <h3>Scenario Costumes</h3>
+    <select name="costumeId" required multiple>
+        <option th:each="costume : ${costumeList}"
+                th:value="${costume.id}" th:text="${costume.name}"></option>
+    </select>
+    <input type="submit">
+</form>
+<div th:switch="${update}">
+<a th:case="${update}" th:href="@{/allScenario/{id}(id=${scenario.id})}">Go back</a>
+<a th:case="*" href="/allScenario">Go back</a>
+</div>
+<div th:insert="navigation :: navigation"></div>
+
+</body>
+</html>

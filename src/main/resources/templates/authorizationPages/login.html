@@ -8,13 +8,13 @@
 </head>
 <body>
 
-<form class="form-style-1"  action="#" th:action="${path}" th:object="${user}" method="post">
+<form class="form-style-1"  action="#" th:action="${path}" th:object="${authorization}" method="post">
     <H1>Login Page</H1>
     <h2 th:text="${errorMessage}" class="loginError"></h2>
-    <h3>User email</h3>
-    <input type="email" th:field="*{email}" required th:value="${user.email}"><br>
+    <h3>User login</h3>
+    <input type="text" th:field="*{login}" required th:value="${authorization.login}"><br>
     <h3>User password</h3>
-    <input type="password" th:field="*{password}" required th:value="${user.password}"><br>
+    <input type="password" th:field="*{password}" required th:value="${authorization.password}"><br>
     <input type="submit">
 </form>
 <div th:insert="navigation :: navigation"></div>

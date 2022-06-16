@@ -9,21 +9,23 @@
 <table>
     <tr id="table-header">
         <th>ID</th>
-        <th>Name</th>
-        <th>Password</th>
-        <th>Email</th>
-        <th>Phone</th>
-        <th>Role</th>
+        <th>firstName</th>
+        <th>lastName</th>
+        <th>midName</th>
+        <th>phoneNumber</th>
+        <th>email</th>
+        <th>birthday</th>
         <th></th>
         <th></th>
     </tr>
     <tr th:each="user: ${users}">
         <td><a th:href="@{/allUsers/{id}(id=${user.id})}" th:text="${user.id}"></a></td>
-        <td th:text="${user.name}"></td>
-        <td th:text="${user.password}"></td>
+        <td th:text="${user.firstName}"></td>
+        <td th:text="${user.lastName}"></td>
+        <td th:text="${user.midName}"></td>
+        <td th:text="${user.phoneNumber}"></td>
         <td th:text="${user.email}"></td>
-        <td th:text="${user.phone}"></td>
-        <td th:text="${user.role}"></td>
+        <td th:text="${user.birthday}"></td>
         <td><a th:href="@{/deleteUser/{id}(id=${user.id})}">Delete</a></td>
         <td><a th:href="@{/updateUser/{id}(id=${user.id})}">Update</a></td>
     </tr>

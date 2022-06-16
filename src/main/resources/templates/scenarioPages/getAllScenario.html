@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Details</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<table>
+    <tr id="table-header">
+        <th>ID</th>
+        <th>name</th>
+        <th>description</th>
+        <th>price</th>
+        <th>costumes</th>
+        <th></th>
+        <th></th>
+    </tr>
+    <tr th:each="scenario: ${scenarios}">
+        <td><a th:href="@{/allScenario/{id}(id=${scenario.id})}" th:text="${scenario.id}"></a></td>
+        <td th:text="${scenario.name}"></td>
+        <td th:text="${scenario.description}"></td>
+        <td th:text="${scenario.price}"></td>
+        <td><a class="id-link" th:each="costume: ${scenario.costumes}" th:href="@{/allCostumes/{id}(id=${costume.id})}" th:text="'[' +${costume.name} + ']'"></a></td>
+        <td><a th:href="@{/deleteScenario/{id}(id=${scenario.id})}">Delete</a></td>
+        <td><a th:href="@{/updateScenario/{id}(id=${scenario.id})}">Update</a></td>
+    </tr>
+</table>
+<a href="/insertScenario">New Scenario</a><br>
+<a href="/allScenario" th:if="${getById}">All Scenarios</a>
+<div th:insert="navigation :: navigation"></div>
+
+</body>
+</html>

@@ -1,104 +1,49 @@
 package com.nure.API_lab.entities;
 
-import org.hibernate.annotations.LazyCollection;
-import org.hibernate.annotations.LazyCollectionOption;
-
 import javax.persistence.*;
 import java.util.List;
-import java.util.Objects;
 
 @Entity
 public class Category {
     @Id
-    @GeneratedValue
-    public Long id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    public int id;
+    @Column(length=50, nullable = false, unique = true)
     public String name;
-    @LazyCollection(LazyCollectionOption.FALSE)
-    @OneToMany
-    public List<Animator> animators;
-    @LazyCollection(LazyCollectionOption.FALSE)
-    @OneToMany
-    public List<Costume> costumes;
-    public float price;
-    public Category() {
+    @ManyToMany(cascade = CascadeType.MERGE)
+    public List<Scenario> scenarios;
+    @Column(length=500, nullable = false)
+    public String description;
+
+    public int getId() {
+        return id;
     }
 
-    @Override
-    public String toString() {
-        return "Category{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", animators=" + animators +
-                ", costumes=" + costumes +
-                ", price=" + price +
-                '}';
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Category category = (Category) o;
-        return Float.compare(category.price, price) == 0 &&
-                Objects.equals(id, category.id) &&
-                Objects.equals(name, category.name) &&
-                Objects.equals(animators, category.animators) &&
-                Objects.equals(costumes, category.costumes);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, name, animators, costumes, price);
-    }
-
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public void setName(String name) {
         this.name = name;
     }
 
-    public void setAnimators(List<Animator> animators) {
-        this.animators = animators;
+    public List<Scenario> getScenarios() {
+        return scenarios;
     }
 
-    public void setCostumes(List<Costume> Costumes) {
-        this.costumes = Costumes;
+    public void setScenarios(List<Scenario> scenarios) {
+        this.scenarios = scenarios;
     }
 
-    public float getPrice() {
-        return price;
+    public String getDescription() {
+        return description;
     }
 
-    public void setPrice(float price) {
-        this.price = price;
+    public void setDescription(String description) {
+        this.description = description;
     }
-
-    public Category(Long id, String name, List<Animator> animators, List<Costume> Costumes) {
-        this.id = id;
-        this.name = name;
-        this.animators = animators;
-        this.costumes = Costumes;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-
-    public String getName() {
-        return name;
-    }
-
-
-    public List<Animator> getAnimators() {
-        return animators;
-    }
-
-
-    public List<Costume> getCostumes() {
-        return costumes;
-    }
-
 }
