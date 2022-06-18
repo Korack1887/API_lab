@@ -10,6 +10,11 @@
 /*.id-link{*/
 /*    text-decoration: none;*/
 /*}*/
+.main{
+    width: 400px;
+    margin: 0 auto;
+    float: left;
+}
 table {
     width: 50%;
     margin-bottom: 20px;

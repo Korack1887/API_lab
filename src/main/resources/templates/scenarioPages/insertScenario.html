@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-</div>
+<div class="main">
 <h3 th:if="${update}">Scenario id: <span th:text="${scenario.id}"></span></h3>
 <form class="form-style-1"  action="#" th:action="${path}" th:object="${scenario}" method="post">
     <h3>Scenario name</h3>
@@ -27,6 +27,6 @@
 <a th:case="*" href="/allScenario">Go back</a>
 </div>
 <div th:insert="navigation :: navigation"></div>
-
+</div>
 </body>
 </html>

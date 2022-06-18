@@ -13,13 +13,9 @@
     <input type="text" th:field="*{name}" required th:value="${category.name}"><br>
     <h3>Category price</h3>
     <input type="text" th:field="*{price}" required th:value="${category.price}"><br>
-    <select name="animatorId" required multiple>
+    <select name="scenarioId" required multiple>
         <option th:each="animator : ${animatorList}"
                 th:value="${animator.id}" th:text="${animator.name}"></option>
-    </select>
-    <select name="costumeId" required multiple>
-        <option th:each="costume : ${costumeList}"
-                th:value="${costume.id}" th:text="${costume.name}"></option>
     </select>
     <input type="submit">
 </form>

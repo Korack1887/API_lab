@@ -20,6 +20,14 @@ public class EventOrder {
     @ManyToOne(optional = false)
     public Status status;
 
+    public EventOrder() {
+        user = new User();
+        date = new Date(System.currentTimeMillis());
+        time = new Time(System.currentTimeMillis());
+        address = "";
+        status = new Status();
+    }
+
     public int getId() {
         return id;
     }

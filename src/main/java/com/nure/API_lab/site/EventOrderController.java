@@ -5,8 +5,10 @@
 //import com.nure.API_lab.entities.EventOrder;
 //import com.nure.API_lab.entities.Details;
 //import com.nure.API_lab.repository.CategoryRepository;
+//import com.nure.API_lab.repository.EventOrderRepository;
 //import com.nure.API_lab.repository.OrderRepository;
 //import com.nure.API_lab.repository.DetailsRepository;
+//import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.stereotype.Controller;
 //import org.springframework.ui.Model;
 //import org.springframework.web.bind.annotation.*;
@@ -15,15 +17,8 @@
 //
 //@Controller
 //public class EventOrderController {
-//    OrderRepository repository;
-//    DetailsRepository detailsRepository;
-//    CategoryRepository categoryRepository;
-//
-//    public EventOrderController(OrderRepository repository, DetailsRepository detailsRepository, CategoryRepository categoryRepository) {
-//        this.repository = repository;
-//        this.detailsRepository = detailsRepository;
-//        this.categoryRepository = categoryRepository;
-//    }
+//    @Autowired
+//    EventOrderRepository repository;
 //
 //    @GetMapping(value = "/allEventOrders")
 //    public String getAllEventOrders(Model model) {
