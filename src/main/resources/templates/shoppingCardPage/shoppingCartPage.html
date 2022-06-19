@@ -18,7 +18,7 @@
         <td th:text="${priceSum} + ' UAH'"></td>
     </tr>
 </table>
-<button><a href="/createOrder">Order now</a></button>
+<button><a th:href="@{/createOrder/{id}(id=${carts[0].eventOrder.id})}">Order now</a></button>
 <div th:insert="navigation :: navigation"></div>
 </body>
 </html>

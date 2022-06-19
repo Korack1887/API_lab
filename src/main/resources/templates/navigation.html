@@ -5,13 +5,16 @@
 </head>
 <body>
 <div class="left-menu" th:fragment="navigation">
-    <a href="/allActors">all Actors</a><br>
+    <a th:if="${session?.auth==null}" href="/registration">Registration</a><br>
+    <a th:if="${session?.auth==null}" href="/login">Login</a><br>
+    <a th:if="${session?.auth!=null}" href="/signOut">Sign Out</a><br>
+    <a th:if="${session?.auth?.role?.name == 'ADMIN'}" href="/allActors">all Actors</a><br>
     <a href="/allCategories">all Categories</a><br>
     <a href="/allCostumes">all Costumes</a><br>
     <a href="/allScenario">all Scenario</a><br>
-    <a href="/allUsers">all Users</a><br>
+    <a th:if="${session?.auth?.role?.name == 'ADMIN'}" href="/allUsers">all Users</a><br>
     <a href="/allEventOrders">all EventOrders</a><br>
-    <a href="" th:text="${session?.user?.email}"></a><br>
+    <a href="" th:text="${session?.auth?.user?.email}"></a><br>
 </div>
 </body>
 </html>

@@ -9,23 +9,31 @@
 </div>
 <h3 th:if="${update}">EventOrder id: <span th:text="${eventOrder.id}"></span></h3>
 <form class="form-style-1"  action="#" th:action="${path}" th:object="${eventOrder}" method="post">
-    <h3>EventOrder status</h3>
-    <select th:field="*{status}">
-        <option th:each="status : ${T(com.nure.API_lab.entities.Status).values()}"
-                th:value="${status}" th:text="${status}"></option>
-    </select><br>
-    <h3>EventOrder details</h3>
-    <select name="detailsId" required multiple>
-        <option th:each="details : ${detailsList}"
-                th:value="${details.id}" th:text="${details.address}"></option>
-    </select>
-    <h3>category</h3>
-    <select name="categoryId" required multiple>
-        <option th:each="category : ${categoryList}"
-                th:value="${category.id}" th:text="${category.name}"></option>
-    </select>
+    <input type="text" th:field="*{id}" required th:value="${eventOrder.id}" hidden readonly><br>
+    <input type="text" th:field="*{user}" required th:value="${eventOrder.user}" hidden readonly><br>
+    <div th:switch="${session?.auth?.role?.name}">
+        <div th:case="ADMIN" >
+            <h3>Order Status</h3>
+            <select name="statusId" required>
+                <option th:each="status : ${statusList}"
+                        th:value="${status.id}" th:text="${status.name}"></option>
+            </select><br>
+            <h3>Order actors</h3>
+            <select name="actorId" multiple>
+                <option th:each="actor : ${actorList}"
+                        th:value="${actor.id}" th:text="${actor.lastName}"></option>
+            </select><br>
+        </div>
+        <div th:case="*">
+            <input type="text" th:field="*{status}" required th:value="${eventOrder.status}" hidden readonly><br>
+        </div>
+    </div><br>
+    <h3>Order address</h3>
+    <input type="text" th:field="*{address}" required th:value="${eventOrder.address}"><br>
     <h3>Details date</h3>
-    <input type="datetime-local" th:field="*{date}" required th:value="${eventOrder.date}"><br>
+    <input type="date" th:field="*{date}" required th:value="${eventOrder.date}"><br>
+    <h3>Details Time</h3>
+    <input type="time" th:field="*{time}" required th:value="${eventOrder.time}"><br>
     <input type="submit">
 </form>
 <div th:switch="${update}">

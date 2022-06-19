@@ -24,9 +24,9 @@
         <td th:text="${scenario.description}"></td>
         <td th:text="${scenario.price}"></td>
         <td><a class="id-link" th:each="costume: ${scenario.costumes}" th:href="@{/allCostumes/{id}(id=${costume.id})}" th:text="'[' +${costume.name} + ']'"></a></td>
-        <td><a th:href="@{/deleteScenario/{id}(id=${scenario.id})}">Delete</a></td>
-        <td><a th:href="@{/updateScenario/{id}(id=${scenario.id})}">Update</a></td>
-        <td th:if="${session.user!=null}"><a th:href="@{/addScenarioToCart/{id}(id=${scenario.id})}">Add to cart</a></td>
+        <td th:if="${session?.auth?.role?.name == 'ADMIN'}"><a th:href="@{/deleteScenario/{id}(id=${scenario.id})}">Delete</a></td>
+        <td th:if="${session?.auth?.role?.name == 'ADMIN'}"><a th:href="@{/updateScenario/{id}(id=${scenario.id})}">Update</a></td>
+        <td th:if="${session.auth!=null}"><a th:href="@{/addScenarioToCart/{id}(id=${scenario.id})}">Add to cart</a></td>
     </tr>
 </table>
 <a href="/insertScenario">New Scenario</a><br>

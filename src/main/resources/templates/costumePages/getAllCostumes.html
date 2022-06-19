@@ -20,9 +20,9 @@
         <td><a th:href="@{/allCostumes/{id}(id=${costume.id})}" th:text="${costume.id}"></a></td>
         <td th:text="${costume.name}"></td>
         <td th:text="${costume.description}"></td>
-        <td><a th:href="@{/deleteCostume/{id}(id=${costume.id})}">Delete</a></td>
-        <td><a th:href="@{/updateCostume/{id}(id=${costume.id})}">Update</a></td>
-        <td th:if="${session.user!=null && #lists.contains(costumeIds, costume.id)}"><a th:href="@{/addCostumeToCart/{id}(id=${costume.id})}">Add to cart</a></td>
+        <td th:if="${session?.auth?.role?.name == 'ADMIN'}"><a th:href="@{/deleteCostume/{id}(id=${costume.id})}">Delete</a></td>
+        <td th:if="${session?.auth?.role?.name == 'ADMIN'}"><a th:href="@{/updateCostume/{id}(id=${costume.id})}">Update</a></td>
+        <td th:if="${session.auth!=null && #lists.contains(costumeIds, costume.id)}"><a th:href="@{/addCostumeToCart/{id}(id=${costume.id})}">Add to cart</a></td>
     </tr>
 </table>
 <a href="/insertCostume">New Costume</a><br>

@@ -21,8 +21,8 @@
         <td th:text="${category.name}"></td>
         <td th:text="${category.description}"></td>
         <td><a class="id-link" th:each="scenario: ${category.scenarios}" th:href="@{/allScenario/{id}(id=${scenario.id})}" th:text="'[' +${scenario.name} + ']'"></a></td>
-        <td><a th:href="@{/deleteCategory/{id}(id=${category.id})}">Delete</a></td>
-        <td><a th:href="@{/updateCategory/{id}(id=${category.id})}">Update</a></td>
+        <td th:if="${session?.auth?.role?.name == 'ADMIN'}"><a th:href="@{/deleteCategory/{id}(id=${category.id})}">Delete</a></td>
+        <td th:if="${session?.auth?.role?.name == 'ADMIN'}"><a th:href="@{/updateCategory/{id}(id=${category.id})}">Update</a></td>
     </tr>
 </table>
 <a href="/insertCategory">New Category</a><br>

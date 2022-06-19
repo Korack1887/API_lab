@@ -27,8 +27,8 @@
         <td th:text="${user.phoneNumber}"></td>
         <td th:text="${user.email}"></td>
         <td th:text="${user.birthday}"></td>
-        <td><a th:href="@{/deleteUser/{id}(id=${user.id})}">Delete</a></td>
-        <td><a th:href="@{/updateUser/{id}(id=${user.id})}">Update</a></td>
+        <td th:if="${session?.auth?.role?.name == 'ADMIN'}"><a th:href="@{/deleteUser/{id}(id=${user.id})}">Delete</a></td>
+        <td th:if="${session?.auth?.role?.name == 'ADMIN'}"><a th:href="@{/updateUser/{id}(id=${user.id})}">Update</a></td>
     </tr>
 </table>
 <a href="/insertUser">New User</a><br>

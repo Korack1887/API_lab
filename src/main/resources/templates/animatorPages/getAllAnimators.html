@@ -17,8 +17,8 @@
     <tr th:each="animator: ${animators}">
         <td><a th:href="@{/allActors/{id}(id=${animator.id})}" th:text="${animator.id}"></a></td>
         <td th:text="${animator.name}"></td>
-        <td><a th:href="@{/deleteActor/{id}(id=${animator.id})}">Delete</a></td>
-        <td><a th:href="@{/updateActor/{id}(id=${animator.id})}">Update</a></td>
+        <td th:if="${session?.auth?.role?.name == 'ADMIN'}"><a th:href="@{/deleteActor/{id}(id=${animator.id})}">Delete</a></td>
+        <td th:if="${session?.auth?.role?.name == 'ADMIN'}"><a th:href="@{/updateActor/{id}(id=${animator.id})}">Update</a></td>
     </tr>
 </table>
 <a href="/insertActor">New Actor</a><br>
