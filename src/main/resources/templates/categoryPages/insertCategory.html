@@ -11,11 +11,12 @@
 <form class="form-style-1"  action="#" th:action="${path}" th:object="${category}" method="post">
     <h3>Category name</h3>
     <input type="text" th:field="*{name}" required th:value="${category.name}"><br>
-    <h3>Category price</h3>
-    <input type="text" th:field="*{price}" required th:value="${category.price}"><br>
+    <h3>Category description</h3>
+    <input type="text" th:field="*{description}" required th:value="${category.description}"><br>
+    <h3>Category scenarios</h3>
     <select name="scenarioId" required multiple>
-        <option th:each="animator : ${animatorList}"
-                th:value="${animator.id}" th:text="${animator.name}"></option>
+        <option th:each="scenario : ${scenarioList}"
+                th:value="${scenario.id}" th:text="${scenario.name}"></option>
     </select>
     <input type="submit">
 </form>

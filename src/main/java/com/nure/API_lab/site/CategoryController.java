@@ -24,14 +24,13 @@ public class CategoryController {
 
     @GetMapping(value = "/")
     public String getDefaultPage(Model model) {
-        List<Category> categories = repository.findAll();
-        model.addAttribute("categories", repository.findAll());
-        return "categoryPages/getAllCategories";
+        return getAllCategories(model);
     }
 
     @GetMapping(value = "/allCategories")
     public String getAllCategories(Model model) {
         model.addAttribute("categories", repository.findAll());
+        model.addAttribute("scenarioList", scenarioRepository.findAll());
         return "categoryPages/getAllCategories";
     }
 
@@ -60,8 +59,8 @@ public class CategoryController {
 
     @PostMapping(value = "/insertCategory")
     public String insertCategory(@ModelAttribute Category category, @RequestParam("scenarioId") Integer[] scenarioId) {
-        List<Scenario> animator = scenarioRepository.findAllById(Arrays.asList(scenarioId));
-        category.setScenarios(animator);
+        List<Scenario> scenarios = scenarioRepository.findAllById(Arrays.asList(scenarioId));
+        category.setScenarios(scenarios);
         repository.save(category);
         return "redirect:/allCategories";
     }

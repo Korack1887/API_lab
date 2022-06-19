@@ -8,6 +8,13 @@ public class Role {
     @GeneratedValue(strategy = GenerationType.AUTO)
     public int id;
 
+    public Role() {
+    }
+    public Role(String name, int id){
+        this.name = name;
+        this.id = id;
+    }
+
     public int getId() {
         return id;
     }
@@ -24,6 +31,6 @@ public class Role {
         this.name = name;
     }
 
-    @Column(length=50, nullable = false)
+    @Column(length=50, nullable = false, unique = true)
     public String name;
 }

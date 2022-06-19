@@ -17,6 +17,10 @@
     <label>
         <input type="text" th:field="*{description}" required th:value="${costume.description}">
     </label><br>
+    <h3>Costume price</h3>
+    <label>
+        <input type="text" th:field="*{price}" required th:value="${costume.price}">
+    </label><br>
     <input type="submit">
 </form>
 <div th:switch="${update}">

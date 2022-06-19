@@ -6,11 +6,13 @@
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
+<div th:insert="shoppingCart :: shoppingCart"></div>
 <table>
     <tr id="table-header">
         <th>ID</th>
         <th>Name</th>
         <th>Description</th>
+        <th></th>
         <th></th>
         <th></th>
     </tr>
@@ -20,6 +22,7 @@
         <td th:text="${costume.description}"></td>
         <td><a th:href="@{/deleteCostume/{id}(id=${costume.id})}">Delete</a></td>
         <td><a th:href="@{/updateCostume/{id}(id=${costume.id})}">Update</a></td>
+        <td th:if="${session.user!=null && #lists.contains(costumeIds, costume.id)}"><a th:href="@{/addCostumeToCart/{id}(id=${costume.id})}">Add to cart</a></td>
     </tr>
 </table>
 <a href="/insertCostume">New Costume</a><br>

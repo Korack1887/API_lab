@@ -1,13 +1,12 @@
 package com.nure.API_lab.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
 public class ShoppingCart implements Serializable {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     public int id;
     @ManyToOne(optional = false)
     public EventOrder eventOrder;
@@ -49,6 +48,7 @@ public class ShoppingCart implements Serializable {
     public void setActor(Actor actor) {
         this.actor = actor;
     }
+
 
     public Costume getCostume() {
         return costume;

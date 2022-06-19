@@ -1,40 +1,38 @@
-//package com.nure.API_lab;
-//
-//
-//import com.nure.API_lab.entities.Category;
-//import com.nure.API_lab.entities.Costume;
-//import com.nure.API_lab.entities.Scenario;
-//import com.nure.API_lab.repository.CategoryRepository;
-//import com.nure.API_lab.repository.CostumeRepository;
-//import com.nure.API_lab.repository.ScenarioRepository;
-//import org.springframework.boot.CommandLineRunner;
-//import org.springframework.context.annotation.Bean;
-//import org.springframework.context.annotation.Configuration;
-//
-//import java.util.Arrays;
-//
-//@Configuration
-//public class LoadDatabase {
-//
-//    @Bean
-//    CommandLineRunner initDatabase(CategoryRepository repository, CostumeRepository costumeRepository, ScenarioRepository scenarioRepository) {
-//        Category category = new Category();
-//        Scenario scenario = new Scenario();
-//        Costume costume = new Costume();
-//        category.setName("qwe");
-//        category.setDescription("asd");
-//        scenario.setName("zxc");
-//        scenario.setDescription("dfg");
-//        scenario.setPrice(123);
-//        costume.setName("qweqwe");
-//        costume.setDescription("zxcasd");
-//        costume.setPrice(5464);
-//        scenario.setCostumes(Arrays.asList(costume));
-//        category.setScenarios(Arrays.asList(scenario));
-//        return args -> {
-//            costumeRepository.save(costume);
-//            scenarioRepository.save(scenario);
-//            repository.save(category);
-//        };
-//    }
-//}
+package com.nure.API_lab;
+
+
+import com.nure.API_lab.entities.*;
+import com.nure.API_lab.repository.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.dao.DataIntegrityViolationException;
+
+import java.util.Arrays;
+
+@Configuration
+public class LoadDatabase {
+@Autowired
+    RoleRepository roleRepository;
+@Autowired
+    StatusRepository statusRepository;
+
+    @Bean
+    CommandLineRunner initDatabase() {
+        return args -> {
+            try {
+                roleRepository.save(new Role("USER", 1));
+                roleRepository.save(new Role("ADMIN", 2));
+                statusRepository.save(new Status("IN DRAFT", 1));
+                statusRepository.save(new Status("FORMED", 2));
+                statusRepository.save(new Status("ACCEPTED", 3));
+                statusRepository.save(new Status("DECLINED", 4));
+                statusRepository.save(new Status("DONE", 5));
+            }
+            catch (DataIntegrityViolationException e){
+                e.printStackTrace();
+            }
+        };
+    }
+}

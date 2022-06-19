@@ -6,29 +6,39 @@
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
+<div th:insert="shoppingCart :: shoppingCart"></div>
 <table>
     <tr id="table-header">
         <th>ID</th>
-        <th>status</th>
-        <th>details</th>
-        <th>category</th>
-        <th>date</th>
+        <th>User phone</th>
+        <th>Address</th>
+        <th>Date</th>
+        <th>Time</th>
+        <th>Scenario</th>
+        <th>Actors</th>
+        <th>Costumes</th>
+        <th>Price</th>
+        <th>Status</th>
         <th></th>
         <th></th>
     </tr>
-    <tr th:each="eventOrder: ${eventOrders}">
-        <td><a th:href="@{/allEventOrder/{id}(id=${eventOrder.id})}" th:text="${eventOrder.id}"></a></td>
-        <td th:text="${eventOrder.status}"></td>
-        <td><a th:href="@{/allDetails/{id}(id=${eventOrder.details.id})}" th:text="${eventOrder.details.id} + '  '"></a></td>
-        <td><a th:href="@{/allCategories/{id}(id=${eventOrder.category.id})}" th:text="${eventOrder.category.id} + '  '"></a></td>
-        <td th:text="${eventOrder.date}"></td>
-        <td><a th:href="@{/deleteEventOrder/{id}(id=${eventOrder.id})}">Delete</a></td>
-        <td><a th:href="@{/updateEventOrder/{id}(id=${eventOrder.id})}">Update</a></td>
+    <tr th:each="entry: ${map}">
+        <td><a th:href="@{/allEventOrder/{id}(id=${entry.key.id})}" th:text="${entry.key.id}"></a></td>
+        <td th:text="${entry.key.user.phoneNumber}"></td>
+        <td th:text="${entry.key?.address}"></td>
+        <td th:text="${entry.key?.date}"></td>
+        <td th:text="${entry.key?.time}"></td>
+        <td><a class="id-link" th:href="@{/allActors/{id}(id=${entry.value[0].scenario.id})}" th:text="'[' +${entry.value[0].scenario.name} + ']'"></a></td>
+        <td><a class="id-link" th:each="cart: ${entry.value}" th:href="@{/allActors/{id}(id=${cart?.actor?.id})}" th:text="'[' +${cart?.actor?.lastName} + ']'"></a></td>
+        <td><a class="id-link" th:each="cart: ${entry.value}" th:href="@{/allCostumes/{id}(id=${cart?.costume?.id})}" th:text="'[' +${cart?.costume?.name} + ']'"></a></td>
+        <td th:text="${priceMap.get(entry.key)} + ' UAH'"></td>
+        <td th:text="${entry.key.status.name}"></td>
+        <td><a th:href="@{/deleteEventOrder/{id}(id=${entry.key.id})}">Delete</a></td>
+        <td><a th:href="@{/updateEventOrder/{id}(id=${entry.key.id})}">Update</a></td>
     </tr>
 </table>
-<a href="/insertEventOrders">New EventOrder</a><br>
-<a href="/countEventOrders">Count orders</a><br>
-<a href="/allEventOrder" th:if="${getById}">All EventOrder</a>
+<a href="/insertEventOrders">New order</a><br>
+<a href="/allEventOrder" th:if="${getById}">All orders</a>
 <div th:insert="navigation :: navigation"></div>
 
 </body>

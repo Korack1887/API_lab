@@ -1,6 +1,7 @@
 package com.nure.API_lab.site;
 
 import com.nure.API_lab.entities.Costume;
+import com.nure.API_lab.entities.ShoppingCart;
 import com.nure.API_lab.repository.CostumeRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,7 +10,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Controller
 public class CostumeController {
@@ -20,7 +24,20 @@ public class CostumeController {
     }
 
     @GetMapping(value = "/allCostumes")
-    public String getAllCostumes(Model model){
+    public String getAllCostumes(Model model, HttpSession session){
+        ShoppingCart currentCart = (ShoppingCart) session.getAttribute("userCart");
+        List<Costume> costumes = new ArrayList<>();
+        if (currentCart!=null ) {
+            costumes = currentCart.getScenario().getCostumes();
+        }
+        List<Integer> costumesInScenarioIds = new ArrayList<>();
+        if (costumes!=null){
+            costumesInScenarioIds =
+                    costumes.stream()
+                            .map(Costume::getId)
+                            .collect(Collectors.toList());
+        }
+        model.addAttribute("costumeIds", costumesInScenarioIds);
         model.addAttribute("costumes", repository.findAll());
         return "costumePages/getAllCostumes";
     }

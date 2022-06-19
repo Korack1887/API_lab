@@ -7,8 +7,15 @@ public class Status {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     public int id;
-    @Column(length=50, nullable = false, unique = true)
+    @Column(length = 50, nullable = false, unique = true)
     public String name;
+
+    public Status() {
+    }
+    public Status(String name, int id) {
+        this.name = name;
+        this.id = id;
+    }
 
     public int getId() {
         return id;

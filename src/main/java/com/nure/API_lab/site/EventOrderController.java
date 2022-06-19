@@ -1,39 +1,43 @@
-//package com.nure.API_lab.site;
-//
-//
-//import com.nure.API_lab.entities.Category;
-//import com.nure.API_lab.entities.EventOrder;
-//import com.nure.API_lab.entities.Details;
-//import com.nure.API_lab.repository.CategoryRepository;
-//import com.nure.API_lab.repository.EventOrderRepository;
-//import com.nure.API_lab.repository.OrderRepository;
-//import com.nure.API_lab.repository.DetailsRepository;
-//import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.stereotype.Controller;
-//import org.springframework.ui.Model;
-//import org.springframework.web.bind.annotation.*;
-//
-//import java.util.ArrayList;
-//
-//@Controller
-//public class EventOrderController {
-//    @Autowired
-//    EventOrderRepository repository;
-//
-//    @GetMapping(value = "/allEventOrders")
-//    public String getAllEventOrders(Model model) {
-//        model.addAttribute("eventOrders", repository.findAll());
-//        return "eventOrdersPages/getAllEventOrders";
-//    }
-//
-//    @GetMapping(value = "/allEventOrders/{id}")
-//    public String getEventOrdersById(Model model, @PathVariable Integer id) {
-//        ArrayList<EventOrder> list = new ArrayList<>();
-//        list.add(repository.getById(id));
-//        model.addAttribute("eventOrders", list);
-//        model.addAttribute("getById", true);
-//        return "eventOrdersPages/getAllEventOrders";
-//    }
+package com.nure.API_lab.site;
+
+
+import com.nure.API_lab.Services.EventOrderService;
+import com.nure.API_lab.entities.EventOrder;
+import com.nure.API_lab.entities.ShoppingCart;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+
+import java.util.HashMap;
+import java.util.List;
+
+@Controller
+public class EventOrderController {
+    @Autowired
+    EventOrderService service;
+
+    @GetMapping(value = "/allEventOrders")
+    public String getAllEventOrders(Model model) {
+        HashMap<EventOrder, List<ShoppingCart>> map = new HashMap();
+        HashMap<EventOrder, Double> priceMap = new HashMap();
+        service.repository.findAll().forEach(order -> map.put(order, service.getAllCartsForOrder(order)));
+        map.entrySet().forEach(entry -> priceMap.put(entry.getKey(), service.getSumPrice(entry.getKey())));
+        model.addAttribute("map", map);
+        model.addAttribute("priceMap", priceMap);
+        return "eventOrdersPages/getAllEventOrders";
+    }
+
+    @GetMapping(value = "/allEventOrders/{id}")
+    public String getEventOrdersById(Model model, @PathVariable Integer id) {
+        HashMap<EventOrder, List<ShoppingCart>> map = new HashMap();
+        EventOrder order = service.repository.getById(id);
+        map.put(order, service.getAllCartsForOrder(order));
+        model.addAttribute("map", map);
+        model.addAttribute("getById", true);
+        return "eventOrdersPages/getAllEventOrders";
+    }
 //
 //    @GetMapping(value = "/deleteEventOrders/{id}")
 //    public String deleteEventOrders(@PathVariable Integer id) {
@@ -79,18 +83,4 @@
 //        repository.save(eventOrders);
 //        return "redirect:/allEventOrders";
 //    }
-//
-//    @GetMapping(value = "/countEventOrders")
-//    public String countEventOrders(Model model, @RequestParam(value = "count", required = false) Long count) {
-//        model.addAttribute("count", count);
-//        model.addAttribute("categoryList", categoryRepository.findAll());
-//        return "eventOrdersPages/orderCount";
-//    }
-//
-//    @PostMapping(value = "/countEventOrders")
-//    public String countEventOrders(@RequestParam("categoryId") Long categoryId, @RequestParam(value = "status") String status, Model model) {
-//        Long count = repository.findAll().stream().filter(order -> order.getStatus().toString().equals(status) && order.getCategory().getId().equals(categoryId)).count();
-//        model.addAttribute("count", count);
-//        return countEventOrders(model, count);
-//    }
-//}
+}

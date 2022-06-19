@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>User</title>
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+</head>
+<body>
+<table>
+    <tr id="table-header">
+        <th>Scenario name</th>
+        <th>Costumes</th>
+        <th>Cost</th>
+    </tr>
+    <tr>
+        <td><a class="id-link" th:href="@{/allScenario/{id}(id=${carts[0].scenario.id})}" th:text="'[' +${carts[0].scenario.name} + ']'"></a></td>
+        <td><a class="id-link" th:each="cart: ${carts}" th:href="@{/allCostumes/{id}(id=${cart.costume.id})}" th:text="'[' +${cart.costume.name} + ']'"></a></td>
+        <td th:text="${priceSum} + ' UAH'"></td>
+    </tr>
+</table>
+<button><a href="/createOrder">Order now</a></button>
+<div th:insert="navigation :: navigation"></div>
+</body>
+</html>

@@ -40,10 +40,10 @@ public class AuthorizationController {
     public String insertUser(@ModelAttribute Authorization authorization, HttpSession session, @RequestParam("roleId") Integer roleId) {
         User newUser = (User) session.getAttribute("user");
         session.removeAttribute("user");
+        session.removeAttribute("userCart");
         authorization.setUser(newUser);
         authorization.setRole(roleRepository.getById(roleId));
-        session.setAttribute("userRole", authorization.role);
-        userRepository.save(authorization.user);
+        session.setAttribute("user", userRepository.save(authorization.user));
         repository.save(authorization);
         return "redirect:/allUsers";
     }
@@ -58,7 +58,9 @@ public class AuthorizationController {
     @PostMapping(value = "/login")
     public String login(@ModelAttribute Authorization authorization, HttpSession session) {
         if (service.login(authorization)) {
-            session.setAttribute("userRole", service.getByEmail(authorization.login).role);
+            session.removeAttribute("user");
+            session.removeAttribute("userCart");
+            session.setAttribute("user", service.getByEmail(authorization.login).getUser());
             return "redirect:/allUsers";
         }
         return "redirect:/login?errorMessage=Wrong+email+or+password";
